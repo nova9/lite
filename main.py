@@ -3,7 +3,6 @@ import sys
 import re
 import os
 
-from requests.api import get
 print('\n\n\n\n\n\n\n\n\n\n\n\n')
 os.system('clear')
 # Third party modules
