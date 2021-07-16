@@ -7,9 +7,9 @@ Python script to download any literotica story
  2. `pip3 install requests`
  3. `python main.py "<LINK OF THE STORY>"`
 >Link will be like this
-> https://www.literotica.com/p/a-challenge-part-01
+> https://www.literotica.com/s/a-challenge-part-01
 > or this
-> https://www.literotica.com/p/a-challenge-part-01?page=2
+> https://www.literotica.com/s/a-challenge-part-01?page=2
 
  5. `DONE!`
 
