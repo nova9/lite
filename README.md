@@ -1,5 +1,5 @@
 # lite
-Python script to download any literotica story
+Python script to download any literotica story. It just works.
 
 # How To
 
