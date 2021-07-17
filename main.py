@@ -9,8 +9,7 @@ os.system('clear')
 import requests
 
 def init_link_to_link_base(init_link):
-    link_base=re.search(r'\/s\/(.+)(?:\?)?', init_link).group(1) # first match - first paranthesis LOOK AT THIS STACKOVERFLOW FOR THE REGEX https://stackoverflow.com/questions/2038023/regex-to-match-www-or-nothing/2038030
-    # print(link_base)
+    link_base=re.search(r'\/\w\/(.+)', init_link).group(1) # first match - first paranthesis
     print(link_base)
     return link_base
 
@@ -27,9 +26,7 @@ def get_json(link:str)->dict:
     return(json_dict)
 
 
-def get_story(init_link):
-    link_base=init_link_to_link_base(init_link)
-
+def get_story(link_base):
     init_json=get_json(link_base_to_link(link_base, 1))
     number_of_pages=init_json['meta']['pages_count']
     title=init_json['submission']['title']
@@ -58,7 +55,14 @@ def get_story(init_link):
             text_file.write(page_number_with_border)
             text_file.write(story)
 
+def get_series(init_link):
+    link_base=init_link_to_link_base(init_link)
+    init_json=get_json(link_base_to_link(link_base, 1))
 
+    items_of_the_series=init_json['submission']['series']['items']  #list
+
+    for i in items_of_the_series:
+        get_story(i['url'])
 
 
 
@@ -68,5 +72,5 @@ if (__name__=='__main__'):
         print('There is a story in the directory. Delete it')
     else:
         print(sys.argv[1])
-        get_story(sys.argv[1])
-
+        link_base=init_link_to_link_base(sys.argv[1])
+        get_series('https://www.literotica.com/s/life-after-the-lottery-ch-11')
