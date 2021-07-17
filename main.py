@@ -55,8 +55,7 @@ def get_story(link_base):
             text_file.write(page_number_with_border)
             text_file.write(story)
 
-def get_series(init_link):
-    link_base=init_link_to_link_base(init_link)
+def get_series(link_base):
     init_json=get_json(link_base_to_link(link_base, 1))
 
     items_of_the_series=init_json['submission']['series']['items']  #list
@@ -73,4 +72,4 @@ if (__name__=='__main__'):
     else:
         print(sys.argv[1])
         link_base=init_link_to_link_base(sys.argv[1])
-        get_series('https://www.literotica.com/s/life-after-the-lottery-ch-11')
+        get_series(link_base)
