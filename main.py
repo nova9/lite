@@ -69,5 +69,4 @@ if (__name__=='__main__'):
     else:
         print(sys.argv[1])
         get_story(sys.argv[1])
-        
 
