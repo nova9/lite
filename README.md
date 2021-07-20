@@ -1,11 +1,13 @@
 # lite
-Python script to download any literotica story. It just works.
+Python script to download any literotica story.
+
+Don't worry about the acuracy. If something got downloaded without an error, it's whole thing. No more. No less. Single stories can't be downloaded. Whatever the chapter you give as the link, whole series will be downloaded.
 
 # How To
 
  1. `git clone https://github.com/nova9/lite.git`
  2. `pip3 install requests`
- 3. `python main.py "<LINK OF THE STORY>"`
+ 3. `python3 main.py "<LINK OF THE STORY>"`
 >Link should be like this
 > https://www.literotica.com/s/a-challenge-part-01
 
