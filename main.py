@@ -2,6 +2,8 @@
 import sys
 import re
 import os
+from alive_progress import alive_bar
+import time
 
 print('\n\n\n\n\n\n\n\n\n\n\n\n')
 os.system('clear')
@@ -25,7 +27,6 @@ def get_json(link:str)->dict:
     json_dict=response.json()
     return(json_dict)
 
-
 def get_story(link_base):
     init_json=get_json(link_base_to_link(link_base, 1))
     number_of_pages=init_json['meta']['pages_count']
@@ -41,27 +42,38 @@ def get_story(link_base):
         text_file.write(title_with_border)
 
 
-
-    for i in range(1,number_of_pages+1):
-        page_number_with_border=f'''
+    with alive_bar(number_of_pages) as bar:
+        for i in range(1,number_of_pages+1):
+            page_number_with_border=f'''
 --------------------------------------------
 |PAGE {i}|
 --------------------------------------------\n'''
-        print(page_number_with_border)
+            # print(page_number_with_border)
 
-        story=get_json(link_base_to_link(link_base,i))['pageText']
-        print(story)
-        with open('story.txt',mode='a') as text_file:
-            text_file.write(page_number_with_border)
-            text_file.write(story)
+            story=get_json(link_base_to_link(link_base,i))['pageText']
+            # print(story)
+            with open('story.txt',mode='a') as text_file:
+                text_file.write(page_number_with_border)
+                text_file.write(story)
+            bar()
+
 
 def get_series(link_base):
     init_json=get_json(link_base_to_link(link_base, 1))
 
-    items_of_the_series=init_json['submission']['series']['items']  #list
+    try:
+        items_of_the_series=init_json['submission']['series']['items']  #list
+        for i in items_of_the_series:
+            get_story(i['url'])
+    except:
+        print("FALL BACK")
+        number_of_chapters_input=int(input('Could not identify the series. Please tell me how many chapters are in the series?\t'))
+        items_of_the_series=[f'{link_base[:-6]}-ch-{str(n).zfill(2)}' for n in range(1, number_of_chapters_input+1)]
 
-    for i in items_of_the_series:
-        get_story(i['url'])
+        # print(items_of_the_series)
+        for i in items_of_the_series:
+            get_story(i)
+
 
 
 
@@ -73,3 +85,5 @@ if (__name__=='__main__'):
         print(sys.argv[1])
         link_base=init_link_to_link_base(sys.argv[1])
         get_series(link_base)
+
+    print('Create a github issue if you encouter any problem'.capitalize())
