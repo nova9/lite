@@ -31,11 +31,17 @@ def get_story(link_base):
     init_json=get_json(link_base_to_link(link_base, 1))
     number_of_pages=init_json['meta']['pages_count']
     title=init_json['submission']['title']
+    author_name=init_json['submission']['authorname']
+    author_homepage=init_json['submission']['author']['homepage']
+    story_link=f'https://literotica.com/s/{link_base}'
 
 
     title_with_border=f'''
 --------------------------------------------
-|{title}|
+|Title: {title}|
+|Author: {author_name}|
+|Author Homepage: {author_homepage}|
+|Story link: {story_link}|
 --------------------------------------------'''
     print(title_with_border)
     with open('story.txt',mode='a') as text_file:
@@ -86,4 +92,4 @@ if (__name__=='__main__'):
         link_base=init_link_to_link_base(sys.argv[1])
         get_series(link_base)
 
-    print('Create a github issue if you encouter any problem'.capitalize())
+    print('\n\n\n\n|||||||Create a github issue if you encouter any problem|||||||'.upper())
