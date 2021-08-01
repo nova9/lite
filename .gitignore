@@ -175,3 +175,4 @@ cython_debug/
 
 #nova8 added
 *.json
+*.txt
