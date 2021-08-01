@@ -173,7 +173,5 @@ cython_debug/
 
 # End of https://www.toptal.com/developers/gitignore/api/python,macos
 
-
 #nova8 added
-
 *.json
