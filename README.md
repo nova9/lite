@@ -1,4 +1,4 @@
-# lite
+# lite-dl
 Python script to download any literotica story.
 
 Don't worry about the acuracy. If something got downloaded without an error, it's whole thing. No more. No less. Single stories can't be downloaded. Whatever the chapter you give as the link, whole series will be downloaded.
