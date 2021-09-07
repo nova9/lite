@@ -5,7 +5,7 @@ Don't worry about the acuracy. If something got downloaded without an error, it'
 
 # How To
 
- 1. `git clone https://github.com/nova9/lite.git`
+ 1. `git clone https://github.com/nova9/lite-dl.git`
  2. `Go into the folder`
  2. `pip3 install -r requirements.txt`
  4. `python3 main.py "<LINK OF THE STORY>"`
